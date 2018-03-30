@@ -1,0 +1,15 @@
+[
+    {
+        "complaintId": 123456,
+        "description": "Embankment issue",
+        "Severity": "high",
+        "status": 1,
+        "area": "ganga",
+        "pincode": 123456,
+        "geometry": {
+            "type": "Point",
+            "coordinates": [12.1, 122.2]
+        },
+        "date":"2018-05-25"
+    }
+]

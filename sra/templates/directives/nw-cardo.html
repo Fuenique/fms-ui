@@ -1,0 +1,16 @@
+<div ng-show=!complaintspublic.length>
+<h2>No Requests yet</h2>
+</div>
+
+<a href="#!sra/complaintspublic/{{complaint.complaintId}}" class="card-hover" ng-repeat="complaint in complaintspublic">
+    <div class="card complaint-card">
+        <div class="card-header">Complaint</div>
+        <div class="card-body">
+            <div class="card-title">
+                Complaint ID: {{complaint.complaintId}}
+            </div>
+            <div class="card-text">Description: {{complaint.description}}</div>
+        </div>
+        <div class="card-footer">Date: {{complaint.date}}</div>
+    </div>
+</a>

@@ -1,0 +1,50 @@
+<div class="container" ng-show=!selection>
+    <div id="map-canvas" ></div>
+    <table class="table table-bordered">
+        <tr>
+            <td>ComplaintId:</td>
+            <td>{{activeComplaint.complaintId}}</td>
+        </tr>
+        <tr>
+                <td>Description:</td>
+                <td>{{activeComplaint.description}}</td>
+        </tr>
+        <tr>
+                <td>Severity:</td>
+                <td>{{activeComplaint.Severity}}</td>
+        </tr>
+        <tr>
+                <td>Status:</td>
+                <td>{{activeComplaint.status}}</td>
+        </tr>
+        <tr>
+                <td>Area:</td>
+                <td>{{activeComplaint.area}}</td>
+         </tr>
+         <tr>
+                <td>Pincode:</td>
+                <td>{{activeComplaint.pincode}}</td>
+         </tr>
+</table>
+   <div class="text-center">
+        <button type="button" ng-click="selectsra()" class="btn btn-default">SELECT SRA</button>
+    </div>
+</div>
+<div class="container" ng-show="selection &amp;&amp; !isSubmitted" class="card-hover" ng-repeat="x in sras track by $index">
+    <div class="card complaint-card">
+        <div class="card-header">SRA</div>
+        <div class="card-body">
+            <div class="card-title">
+                SRA ID: {{x.sraId}}
+            </div>
+            <div class="card-text">DETAILS:{{x.details}}</div>
+            <input type="date" ng-model="x.date">
+        </div>
+        <div class="card-footer">
+            <button type="button" ng-click="send(x)" class="btn btn-default">SUBMIT</button>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" ng-show="isSubmitted">
+    <h1>Complaint is sent to SRA!</h1>
+</div>
