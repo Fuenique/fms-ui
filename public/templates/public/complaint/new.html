@@ -28,6 +28,26 @@
         {{coordinates}}
         <div id="map-canvas" ng-controller="MapViewController"></div>
         <div class="form-group">
+            <label>Type</label>
+            <select class="form-control" ng-model="formData.type">
+                <option value="emabnkment">Embankment Issue</option>
+                <option value="erosion">Erosion Issue</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Affect length</label>
+            <input type="number" class="form-control" ng-model="formData.affectLength" placeholder="Radius in meters">
+        </div>
+        <div class="form-group">
+            <label>Affect Direction</label>
+            <select class="form-control" ng-model="formData.direction">
+                <option value="north">North</option>
+                <option value="east">East</option>
+                <option value="west">West</option>
+                <option value="south">South</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label>Description</label>
             <textarea type="text" class="form-control" ng-model="formData.description"></textarea>
         </div>
@@ -41,7 +61,7 @@
         </div>
         <div class="form-group">
             <label>Location</label>
-            <input type="text" ng-model="formData.location" id="pac-input" class="form-control">
+            <input type="text" ng-model="formData.location" ng-change="changeMarker()" ng-trim="false" id="pac-input" class="form-control">
         </div>
         <div class="form-group">
             <label>Pincode</label>
