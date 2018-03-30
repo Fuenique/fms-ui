@@ -1,32 +1,44 @@
 <div class="container" ng-show=!selection>
-    <div id="map-canvas" ></div>
+    <div id="map-canvas"></div>
     <table class="table table-bordered">
         <tr>
-            <td>ComplaintId:</td>
+            <td>Type</td>
+            <td>{{activeComplaint.type}}</td>
+        </tr>
+        <tr>
+            <td>Affected Area</td>
+            <td>{{ (3.1415*activeComplaint.affectedArea*activeComplaint.affectedArea) / 1000000}} Sq.Kms</td>
+        </tr>
+        <tr>
+            <td>Affect Direction</td>
+            <td>{{activeComplaint.affectDirection}}</td>
+        </tr>
+        <tr>
+            <td>ComplaintId</td>
             <td>{{activeComplaint.complaintId}}</td>
         </tr>
         <tr>
-                <td>Description:</td>
-                <td>{{activeComplaint.description}}</td>
+            <td>Description</td>
+            <td>{{activeComplaint.description}}</td>
         </tr>
         <tr>
-                <td>Severity:</td>
-                <td>{{activeComplaint.Severity}}</td>
+            <td>Severity</td>
+            <td>{{activeComplaint.severity}}</td>
         </tr>
         <tr>
-                <td>Status:</td>
-                <td>{{activeComplaint.status}}</td>
+            <td>Status</td>
+            <td>{{activeComplaint.status}}</td>
         </tr>
         <tr>
-                <td>Area:</td>
-                <td>{{activeComplaint.area}}</td>
-         </tr>
-         <tr>
-                <td>Pincode:</td>
-                <td>{{activeComplaint.pincode}}</td>
-         </tr>
-</table>
-   <div class="text-center">
+            <td>Area</td>
+            <td>{{activeComplaint.area}}</td>
+        </tr>
+        <tr>
+            <td>Pincode</td>
+            <td>{{activeComplaint.pincode}}</td>
+        </tr>
+    </table>
+    <div class="text-center">
         <button type="button" ng-click="selectsra()" class="btn btn-default">SELECT SRA</button>
     </div>
 </div>
@@ -35,9 +47,9 @@
         <div class="card-header">SRA</div>
         <div class="card-body">
             <div class="card-title">
-                SRA ID: {{x.sraId}}
+                SRA ID {{x.sraId}}
             </div>
-            <div class="card-text">DETAILS:{{x.details}}</div>
+            <div class="card-text">DETAILS{{x.details}}</div>
             <input type="date" ng-model="x.date">
         </div>
         <div class="card-footer">

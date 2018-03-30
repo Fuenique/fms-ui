@@ -27,7 +27,6 @@ angular.module('myApp')
 
             .when("/public/history/:complaintId",{
                 templateUrl:"public/templates/public/complaint/show.html",
-                controller:showController,
             })
             .when("/public/new-complaint",{
                 templateUrl: "public/templates/public/complaint/new.html",
@@ -65,15 +64,73 @@ angular.module('myApp')
                         (function () {
                             var uluru = { lat: $scope.activeComplaint.geometry.coordinates[0], lng: $scope.activeComplaint.geometry.coordinates[1] };
                             var map = new google.maps.Map(document.getElementById('map-canvas'), {
-                                zoom: 10,
-                                center: uluru
+                                zoom: 14,
+                                center: uluru,
+                                mapTypeId: google.maps.MapTypeId.HYBRID
                             });
                             var marker = new google.maps.Marker({
                                 position: uluru,
                                 map: map
                             });
-                        }
-                        )();
+
+                            var infowindow = new google.maps.InfoWindow();
+                            var service = new google.maps.places.PlacesService(map);
+                            service.nearbySearch({
+                                location: uluru,
+                                radius: 2000,
+                                type: ['school']
+                            }, callback);
+
+                            // circles
+                            var cityCircle = new google.maps.Circle({
+                                strokeColor: '#FF0000',
+                                strokeOpacity: 0.8,
+                                strokeWeight: 2,
+                                fillColor: '#FF0000',
+                                fillOpacity: 0.35,
+                                map: map,
+                                center: uluru,
+                                radius: 400,
+                            });
+
+                            function callback(results, status) {
+                                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                                    for (var i = 0; i < results.length; i++) {
+                                        var place = results[i];
+                                        createMarker(place);
+                                    }
+                                    console.log(i + "nothing");
+                                }
+                            }
+
+                            function createMarker(place) {
+                                var marker = new google.maps.Marker({
+                                    icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                                    map: map,
+                                    position: place.geometry.location
+                                });
+
+                                google.maps.event.addListener(marker, 'click', function () {
+                                    infowindow.setContent(place.name);
+                                    infowindow.open(map, this);
+                                });
+
+                                var nearbyCircle = new google.maps.Circle({
+                                    strokeColor: '#FFFF00',
+                                    strokeOpacity: 0.8,
+                                    strokeWeight: 2,
+                                    fillColor: '#FFFF00',
+                                    fillOpacity: 0.35,
+                                    map: map,
+                                    center: place.geometry.location,
+                                    radius: 200
+                                });
+                                google.maps.event.addListener(marker, 'click', function () {
+                                    infowindow.setContent(place.name);
+                                    infowindow.open(map, this);
+                                });
+                            }
+                        })();
                         break;
                     }
                 }

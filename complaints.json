@@ -1,5 +1,8 @@
 [
     {
+        "type": "Embankment Issue",
+        "affectedArea": 200,
+        "affectDirection": "North",
         "complaintId": 123456,
         "description": "Embankment issue",
         "severity": "high",
@@ -8,10 +11,13 @@
         "pincode": 123456,
         "geometry": {
             "type": "Point",
-            "coordinates": [12.1, 122.2]
+            "coordinates": [26.4490631, 80.1909607]
         }
     },
     {
+        "type": "Embankment Issue",
+        "affectedArea": 100,
+        "affectDirection": "East",
         "complaintId": 123457,
         "description": "Erosion issue",
         "severity": "medium",
@@ -24,6 +30,9 @@
         }
     },
     {
+        "type": "Erosion Issue",
+        "affectedArea": 150,
+        "affectDirection": "West",
         "complaintId": 123458,
         "description": "Erosion issue low priority",
         "severity": "low",

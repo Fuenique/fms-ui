@@ -6,7 +6,7 @@
             $scope.zoom = 18;
             var mapOptions = {
                 zoom: $scope.zoom,
-                mapTypeId: google.maps.MapTypeId.TERRAIN
+                mapTypeId: google.maps.MapTypeId.HYBRID
             };
 
             $scope.map = new google.maps.Map(
